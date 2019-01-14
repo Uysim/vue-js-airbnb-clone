@@ -1,16 +1,23 @@
 <template>
   <div id="app">
-    <router-view></router-view>
-    <router-link :to="{ name: 'HomePage' }">Home Page</router-link>
-    <router-link :to="{ name: 'OtherPage' }">Other Page</router-link>
-    <router-link :to="{ name: 'LoginPage' }">Login Page</router-link>
+    <component :is="layout">
+      <router-view></router-view>
+
+    </component>
   </div>
 </template>
 
 <script>
 
+const default_layout = 'with_link'
+
 export default {
-  name: 'app'
+  name: 'app',
+  computed: {
+    layout(){
+      return (this.$route.meta.layout || default_layout) + '_layout'
+    }
+  }
 }
 </script>
 

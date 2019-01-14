@@ -1,46 +1,84 @@
 <template>
-    <div id="login">
-        <h1>Login</h1>
-        <input type="text" name="username" v-model="input.username" placeholder="Username" />
-        <input type="password" name="password" v-model="input.password" placeholder="Password" />
-        <button type="button" v-on:click="login()">Login</button>
-    </div>
+  <div id="login" class="d-flex">
+    <div class></div>
+    <d-container class="align-self-center">
+      <d-row>
+        <d-col md="7" sm="4">
+          <h1 class="text-white">Booking for your travel</h1>
+          <br>
+          <h5 class="text-white">Pack and travel with the world class booking</h5>
+        </d-col>
+        <d-col md="5" sm="8">
+          <d-card class=" w-100">
+            <d-card-body title="Log In">
+              <form action="" class="my-5">
+                <div class="form-group">
+                  <label class="sr-only" for="f2_Email">Email Address</label>
+                  <d-input id="f2_Email" class="mb-2 mr-sm-2 mb-sm-0" v-model="input.useremail" placeholder="Your Email" required />
+                  <d-form-invalid-feedback>
+                    Invalid email address!
+                  </d-form-invalid-feedback>
+                  <d-form-valid-feedback>
+                    Your email looks good!
+                  </d-form-valid-feedback>
+                  <small class="form-text text-muted">
+                    We'll never share your email with anyone else.
+                  </small>
+                </div>
+                <div class="form-group">
+                  <label for="f2_PasswordInput" class="sr-only">Password</label>
+                  <d-form-input id="f2_PasswordInput" type="password" v-model="input.password" required placeholder="Password"></d-form-input>
+                  <d-form-invalid-feedback>
+                    Please provide a valid password!
+                  </d-form-invalid-feedback>
+                </div>
+                <d-button type="submit">Login</d-button>
+              </form>
+            </d-card-body>
+          </d-card>
+
+        </d-col>
+      </d-row>
+    </d-container>
+  </div>
 </template>
 
 <script>
-    export default {
-        name: 'LoginPage',
-        data() {
-            return {
-                input: {
-                    username: "",
-                    password: ""
-                }
-            }
-        },
-        methods: {
-            login() {
-                if(this.input.username != "" && this.input.password != "") {
-                    if(this.input.username == 'Hello' && this.input.password == 'Hello') {
-                        // this.$emit("authenticated", true);
-                        this.$router.replace({ name: "HomePage" });
-                    } else {
-                        alert("The username and / or password is incorrect");
-                    }
-                } else {
-                    alert("A username and password must be present");
-                }
-            }
+  export default {
+    name: 'LoginPage',
+    data() {
+      return {
+        input: {
+          useremail: "",
+          password: ""
         }
+      }
+    },
+    methods: {
+      login() {
+        if(this.input.useremail != "" && this.input.password != "") {
+          if(this.input.useremail == 'Hello' && this.input.password == 'Hello') {
+            // this.$emit("authenticated", true);
+            this.$router.replace({ name: "HomePage" });
+          } else {
+            alert("The useremail and / or password is incorrect");
+          }
+        } else {
+          alert("A useremail and password must be present");
+        }
+      }
     }
+  }
 </script>
 
 <style scoped>
-    #login {
-        width: 500px;
-        border: 1px solid #CCCCCC;
-        background-color: #FFFFFF;
-        margin: auto;
-        padding: 20px;
-    }
+  #login {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    min-height: 100vh;
+    background-image: linear-gradient(rgba(0,0,0,.3), rgba(0,0,0,.3)), url(https://images.unsplash.com/photo-1523731407965-2430cd12f5e4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80);
+    z-index: 1;
+  }
 </style>
