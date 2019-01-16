@@ -11,7 +11,7 @@
         <d-col md="5" sm="8">
           <d-card class=" w-100">
             <d-card-body title="Log In">
-              <form action="" class="my-5">
+              <form v-on:submit="login" class="my-5">
                 <div class="form-group">
                   <label class="sr-only" for="f2_Email">Email Address</label>
                   <d-input id="f2_Email" class="mb-2 mr-sm-2 mb-sm-0" v-model="input.useremail" placeholder="Your Email" required />
@@ -54,15 +54,18 @@
         }
       }
     },
+    computed: {
+      count () {
+        return this.$store.state.count
+      }
+    },
     methods: {
       login() {
+
         if(this.input.useremail != "" && this.input.password != "") {
-          if(this.input.useremail == 'Hello' && this.input.password == 'Hello') {
-            // this.$emit("authenticated", true);
+          this.$store.dispatch('login', this.input).then(()=>{
             this.$router.replace({ name: "HomePage" });
-          } else {
-            alert("The useremail and / or password is incorrect");
-          }
+          })
         } else {
           alert("A useremail and password must be present");
         }

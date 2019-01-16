@@ -5,7 +5,7 @@ const routes = [
   { path: '/other-page', name: 'OtherPage', component: pages.OtherPage },
   {
     path: '/login',
-    meta: { layout: 'no_link' },
+    meta: { layout: 'blank' },
     name: 'LoginPage',
     component: pages.LoginPage
   }

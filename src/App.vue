@@ -9,7 +9,7 @@
 
 <script>
 
-const default_layout = 'with_link'
+const default_layout = 'default'
 
 export default {
   name: 'app',
